@@ -1,0 +1,44 @@
+<section class="city-card-green h-full p-4">
+  <header class="mb-4 flex items-center gap-3">
+    <svg class="h-7 w-7 text-city-green drop-shadow-[0_0_10px_rgba(99,232,93,.9)]" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 11 6.5 6.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M5 11h14l1 3v4h-2a2 2 0 1 1-4 0H10a2 2 0 1 1-4 0H4v-4l1-3Z" fill="currentColor" opacity=".85" />
+    </svg>
+    <h2 class="panel-title text-city-green">Traffic Status</h2>
+  </header>
+
+  <div class="grid gap-4 lg:grid-cols-[110px_1fr]">
+    <div class="signal-frame">
+      <div class="signal-light red" [class.dimmed]="status.signalStatus !== 'Red'"></div>
+      <div class="signal-light yellow" [class.dimmed]="status.signalStatus !== 'Yellow'"></div>
+      <div class="signal-light green" [class.dimmed]="status.signalStatus !== 'Green'"></div>
+    </div>
+
+    <dl class="traffic-table">
+      <div>
+        <dt>Signal Status</dt>
+        <dd class="text-city-yellow">{{ status.signalStatus | uppercase }}</dd>
+      </div>
+      <div>
+        <dt>Traffic Volume</dt>
+        <dd class="text-city-yellow text-3xl">{{ status.trafficVolume | number: '1.0-0' }}</dd>
+      </div>
+      <div>
+        <dt>Average Speed</dt>
+        <dd class="text-city-green">{{ status.avgSpeed | number: '1.2-2' }} <small>km/h</small></dd>
+      </div>
+      <div>
+        <dt>Accident Reported</dt>
+        <dd class="text-city-green">{{ status.accidentReported ? 'Yes' : 'No' }}</dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="mt-4 flex items-center gap-3 rounded-md border border-city-yellow/70 bg-city-yellow/10 px-4 py-3 text-city-yellow shadow-yellow">
+    <svg class="h-6 w-6 min-w-6" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m12 3 10 18H2L12 3Z" fill="currentColor" opacity=".28" />
+      <path d="M12 9v5M12 17h.01" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+    </svg>
+    <span class="text-sm font-semibold sm:text-base">Traffic is moderate. Drive carefully.</span>
+  </div>
+</section>
+

@@ -1,0 +1,26 @@
+<div class="scanline-overlay"></div>
+
+<main *ngIf="vm$ | async as vm" class="dashboard-shell">
+  <app-header [activeAlertCount]="vm.activeCrises.length" />
+
+  <app-alert-banner [alerts]="vm.activeCrises" />
+
+  <section class="primary-grid">
+    <app-water-card [levels]="vm.data.waterLevel" />
+
+    <div class="city-card center-panel p-4">
+      <app-radial-network [powerSourceConnected]="vm.powerSourceConnected" />
+    </div>
+
+    <app-traffic-card [status]="vm.data.trafficStatus" />
+  </section>
+
+  <section class="analytics-grid">
+    <app-power-summary [power]="vm.data.powerGrid" [totalLoad]="vm.totalLoad" />
+    <app-line-chart [power]="vm.data.powerGrid" />
+    <app-bar-chart [power]="vm.data.powerGrid" />
+  </section>
+
+  <app-footer-status [weather]="vm.data.weather" [lastUpdated]="vm.lastUpdated" />
+</main>
+

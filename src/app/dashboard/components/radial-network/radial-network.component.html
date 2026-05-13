@@ -1,0 +1,84 @@
+<section class="radial-panel">
+  <h2 class="panel-title text-center">System Connectivity</h2>
+
+  <div class="status-pill" [class.disconnected]="!powerSourceConnected">
+    <span>Overall Status</span>
+    <strong>{{ statusLabel }}</strong>
+  </div>
+
+  <svg class="network-svg" viewBox="0 0 720 360" role="img" aria-label="Power grid network connectivity diagram">
+    <defs>
+      <filter id="networkGlow">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <radialGradient id="powerFill" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffe875" stop-opacity=".62" />
+        <stop offset="100%" stop-color="#ffd21c" stop-opacity=".06" />
+      </radialGradient>
+      <radialGradient id="waterFill" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#20b7ff" stop-opacity=".48" />
+        <stop offset="100%" stop-color="#20b7ff" stop-opacity=".05" />
+      </radialGradient>
+      <radialGradient id="trafficFill" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#63e85d" stop-opacity=".42" />
+        <stop offset="100%" stop-color="#63e85d" stop-opacity=".05" />
+      </radialGradient>
+    </defs>
+
+    <g class="connection-layer" filter="url(#networkGlow)">
+      <path
+        class="connection connected"
+        [class.disconnected]="!powerSourceConnected"
+        d="M360 160 C310 98 257 92 205 142"
+      />
+      <path
+        class="connection warning"
+        [class.disconnected]="!powerSourceConnected"
+        d="M360 160 C420 96 477 98 525 146"
+      />
+      <path class="connection vertical-warning" d="M360 122 V78" />
+    </g>
+
+    <g class="spark-layer" filter="url(#networkGlow)" *ngIf="!powerSourceConnected">
+      <path class="spark" d="M273 117 l14 -14 l18 22 l16 -15" />
+      <path class="spark" d="M454 112 l15 -16 l18 22 l15 -14" />
+    </g>
+
+    <g class="node water-node" transform="translate(150 180)">
+      <circle class="node-ring" r="82" />
+      <circle class="node-orbit" r="63" />
+      <circle class="node-core water" r="47" fill="url(#waterFill)" />
+      <path d="M0-27s17 17.2 17 29A17 17 0 0 1-17 2c0-11.8 17-29 17-29Z" fill="#20b7ff" />
+      <text y="39" text-anchor="middle">WATER</text>
+      <text y="62" text-anchor="middle" class="small danger">CRITICAL</text>
+    </g>
+
+    <g class="node power-node" transform="translate(360 180)">
+      <circle class="node-ring power" r="96" />
+      <circle class="node-orbit power" r="74" />
+      <circle class="node-core power" r="55" fill="url(#powerFill)" />
+      <path d="m13-45-43 57h33l-5 43 47-62H12l1-38Z" fill="#ffd21c" />
+      <text y="42" text-anchor="middle">POWER</text>
+      <text y="65" text-anchor="middle">GRID</text>
+    </g>
+
+    <g class="node traffic-node" transform="translate(570 180)">
+      <circle class="node-ring traffic" r="82" />
+      <circle class="node-orbit traffic" r="63" />
+      <circle class="node-core traffic" r="47" fill="url(#trafficFill)" />
+      <path d="M-24-2-18-23a9 9 0 0 1 8.5-6h19a9 9 0 0 1 8.5 6L24-2H-24Zm-5 0h58l5 15v20H20a11 11 0 0 1-22 0h-12a11 11 0 0 1-22 0h-17V13l5-15Z" fill="#63e85d" transform="scale(.55)" />
+      <text y="39" text-anchor="middle">TRAFFIC</text>
+      <text y="62" text-anchor="middle" class="small caution">CAUTION</text>
+    </g>
+  </svg>
+
+  <div class="legend">
+    <span><i class="connected"></i>Connected</span>
+    <span><i class="warning"></i>Degraded</span>
+    <span><i class="disconnected"></i>Disconnected</span>
+  </div>
+</section>

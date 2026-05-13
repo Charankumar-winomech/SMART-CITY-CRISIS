@@ -1,0 +1,46 @@
+.alert-strip {
+  align-items: stretch;
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  padding: .75rem 1rem;
+}
+
+.alerts-track {
+  display: grid;
+  flex: 1;
+  gap: .75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.alert-card {
+  align-items: center;
+  animation: pulse-glow 1.8s ease-in-out infinite;
+  background: linear-gradient(135deg, rgba(255, 69, 79, .15), rgba(255, 210, 28, .04));
+  border-left: 1px solid rgba(255, 255, 255, .26);
+  color: #ff5d65;
+  display: flex;
+  gap: .8rem;
+  min-height: 2.7rem;
+  padding: .35rem .65rem;
+
+  svg {
+    color: #ffb199;
+    fill: currentColor;
+    filter: drop-shadow(0 0 8px rgba(255, 69, 79, .8));
+    height: 1.45rem;
+    min-width: 1.45rem;
+    width: 1.45rem;
+  }
+
+  span {
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 860px) {
+  .alert-strip {
+    flex-direction: column;
+  }
+}
+

@@ -1,0 +1,73 @@
+<section class="city-card h-full p-4">
+  <header class="mb-4 flex items-center gap-3">
+    <svg class="h-7 w-7 text-city-yellow drop-shadow-[0_0_10px_rgba(255,210,28,.9)]" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m13 2-9 12h7l-1 8 10-13h-7l0-7Z" fill="currentColor" />
+    </svg>
+    <h2 class="panel-title">Power Grid Summary</h2>
+  </header>
+
+  <div class="grid gap-4 lg:grid-cols-[1fr_1fr]">
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:col-span-2">
+      <article class="stat-card blue">
+        <span>Zone 1 Load</span>
+        <strong>{{ power.zone1 | number: '1.2-2' }}</strong>
+        <small>kW</small>
+      </article>
+      <article class="stat-card yellow">
+        <span>Zone 2 Load</span>
+        <strong>{{ power.zone2 | number: '1.2-2' }}</strong>
+        <small>kW</small>
+      </article>
+      <article class="stat-card green">
+        <span>Zone 3 Load</span>
+        <strong>{{ power.zone3 | number: '1.2-2' }}</strong>
+        <small>kW</small>
+      </article>
+      <article class="stat-card violet">
+        <span>Total Load</span>
+        <strong>{{ totalLoad | number: '1.2-2' }}</strong>
+        <small>kW</small>
+      </article>
+    </div>
+
+    <div class="grid gap-3">
+      <article class="environment-card red">
+        <div>
+          <span>Temperature</span>
+          <strong>{{ power.temperature | number: '1.2-2' }} <small>deg C</small></strong>
+        </div>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 14.8V5a4 4 0 0 0-8 0v9.8a6 6 0 1 0 8 0Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+          <path d="M10 6v9" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+        </svg>
+      </article>
+
+      <article class="environment-card blue">
+        <div>
+          <span>Humidity</span>
+          <strong>{{ power.humidity | number: '1.2-2' }} <small>%</small></strong>
+        </div>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3s7 7.1 7 12a7 7 0 0 1-14 0c0-4.9 7-12 7-12Z" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+      </article>
+    </div>
+
+    <article class="gauge-card">
+      <div class="gauge" [style.--needle-rotation]="gaugeRotation">
+        <div class="gauge-face"></div>
+        <div class="needle"></div>
+        <div class="hub"></div>
+      </div>
+      <div class="mt-2 flex justify-between text-xs text-slate-300">
+        <span>0</span>
+        <span>{{ maxLoad | number: '1.0-0' }}</span>
+      </div>
+      <div class="mt-1 text-center font-display">
+        <div class="text-xl font-bold text-slate-100">{{ totalLoad | number: '1.2-2' }} <small class="text-sm text-city-cyan">kW</small></div>
+        <div class="text-base font-bold text-city-red text-glow-red">{{ loadStatus }}</div>
+      </div>
+    </article>
+  </div>
+</section>
+

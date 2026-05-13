@@ -1,0 +1,98 @@
+.header-circuit {
+  background:
+    linear-gradient(90deg, transparent 0 32%, rgba(32, 183, 255, .16) 32.1% 32.25%, transparent 32.35%),
+    radial-gradient(circle at 12% 50%, rgba(32, 183, 255, .18), transparent 24rem),
+    linear-gradient(135deg, transparent 0 42%, rgba(255, 255, 255, .04) 42.1% 42.4%, transparent 42.5%);
+}
+
+.logo-mark {
+  color: #20b7ff;
+  filter: drop-shadow(0 0 12px rgba(32, 183, 255, .75));
+  width: 74px;
+  min-width: 74px;
+}
+
+.header-readout {
+  align-items: center;
+  border-left: 1px solid rgba(148, 163, 184, .22);
+  color: #f5faff;
+  display: flex;
+  gap: .75rem;
+  min-height: 3rem;
+  padding-left: 1rem;
+
+  svg {
+    fill: none;
+    height: 1.45rem;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    width: 1.45rem;
+  }
+
+  span {
+    color: #c7d2fe;
+    display: block;
+    font-size: .85rem;
+    margin-top: .15rem;
+  }
+}
+
+.alert-button {
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 69, 79, .2), rgba(255, 69, 79, .05));
+  border: 1px solid rgba(255, 69, 79, .92);
+  border-radius: 8px;
+  box-shadow: 0 0 24px rgba(255, 69, 79, .62), inset 0 0 22px rgba(255, 69, 79, .18);
+  color: #fecaca;
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  min-height: 54px;
+  min-width: 240px;
+  padding: .7rem 1rem;
+  position: relative;
+  text-transform: uppercase;
+
+  svg {
+    fill: rgba(255, 69, 79, .22);
+    height: 1.65rem;
+    stroke: #ff454f;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
+    width: 1.65rem;
+  }
+
+  span {
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  strong {
+    align-items: center;
+    animation: pulse-glow 1.4s ease-in-out infinite;
+    background: #ff454f;
+    border-radius: 999px;
+    box-shadow: 0 0 16px rgba(255, 69, 79, .9);
+    color: #fff;
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
+    min-width: 2rem;
+    padding: 0 .45rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-readout {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .alert-button {
+    min-width: 100%;
+  }
+}
+

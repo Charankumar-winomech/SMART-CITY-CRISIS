@@ -1,0 +1,41 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.city-card {
+  @include glass-panel($city-cyan);
+  border-radius: 8px;
+}
+
+.city-card-green {
+  @include glass-panel($city-green);
+  border-radius: 8px;
+}
+
+.city-card-red {
+  @include glass-panel($city-red);
+  border-radius: 8px;
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 16px rgba($city-cyan, .8);
+}
+
+.text-glow-red {
+  text-shadow: 0 0 16px rgba($city-red, .9);
+}
+
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, .025),
+    rgba(255, 255, 255, .025) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  mix-blend-mode: screen;
+  opacity: .28;
+}
